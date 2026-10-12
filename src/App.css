@@ -1,0 +1,158 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.todo-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 250px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.todo-input:hover {
+  box-shadow: 0 0 8px hsl(216, 100%, 70%), 0 0 16px #66c9ff;
+}
+
+.todo-input:focus {
+  box-shadow: 0 0 10px #66c9ff, 0 0 20px #66c9ff, 0 0 30px #ffb689;
+  border: 1px solid #66c9ff;
+}
+
+.todo-button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 100px;
+  margin-left: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.todo-button:hover {
+  box-shadow: 0 0 8px #66c9ff, 0 0 16px #66c9ff;
+}
+
+.todo-button:focus {
+  box-shadow: 0 0 10px #66c9ff, 0 0 20px #66c9ff, 0 0 30px   #ffb689;
+  border: 1px solid #66c9ff;
+}
+
+.todo-table {
+  list-style: none;
+  padding: 0;
+  color: white;
+  width: 100%;
+  max-width: 350px;
+}
+
+.todo-table li {
+  background: rgb(255, 255, 255,0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+.todo-table li span {
+  flex: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.todo-table li button {
+  flex-shrink: 0;
+}
+
+.todo-table li:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(5px) scale(1.01);
+}
+
+.todo-table-button {
+  border-radius: 8px;
+  margin-left: 15px;
+  border: none;
+  font-size: 16px;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  color: #66c9ff;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+}
+.todo-table li:hover .todo-table-button {
+  opacity: 1;
+}
+
+.todo-table-button:hover {
+  box-shadow: 0 0 8px #66c9ff, 0 0 16px #66c9ff;
+  color:   #ffb689;
+  transform: scale(1.1);
+}
+
+.todo-table-button:focus {
+  box-shadow: 0 0 10px #66c9ff, 0 0 20px #66c9ff, 0 0 30px   #ffb689;
+  border: 1px solid #66c9ff;
+}
+
+.todo-table li span {
+  transition: all 0.3s ease;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+
+.todo-table-button-completed {
+  border-radius: 8px;
+  margin-left: 15px;
+  border: none;
+  font-size: 16px;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.todo-table-button-completed.active {
+  background: #66c9ff;
+  color: white;
+  box-shadow: 0 0 10px #66c9ff, 0 0 20px   #ffb689;
+  opacity: 0.6;
+}
+
+.todo-table-button-completed:hover {
+  box-shadow: 0 0 8px #66c9ff, 0 0 16px #66c9ff;
+  color:   #ffb689;
+  transform: scale(1.1);
+}
+
+.todo-table-button-completed:focus {
+  box-shadow: 0 0 10px #66c9ff, 0 0 20px #66c9ff, 0 0 30px   #ffb689;
+  border: 1px solid #66c9ff;
+}
