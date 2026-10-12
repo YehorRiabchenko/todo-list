@@ -10,7 +10,8 @@
       if (inputValue.trim() === '') return;
 
     const newTask = {
-        text: inputValue,
+        id: crypto.randomUUID(),
+        text: inputValue.trim(),
         completed: false
       };
 
@@ -18,19 +19,19 @@
       setInputValue('')
     };
 
-    const toggleTasks = (index) => {
-      const newTasks = tasks.map((task, i) => {
-        if (i === index) {
+    const toggleTasks = (id) => {
+      const newTasks = tasks.map((task) => {
+        if (task.id === id) {
           return {...task, completed: !task.completed}
         }
         return task
       })
       setTasks(newTasks);
-    }
+    };
 
-    const deleteTask = (indexToRemove) => {
-      setTasks(tasks.filter((_, index) => index !== indexToRemove))
-    }
+    const deleteTask = (id) => {
+      setTasks(tasks.filter(task => task.id !== id));
+    };
 
     return (
       <div className='container'>
@@ -44,20 +45,20 @@
       />
       <button className='todo-button'  onClick={addTask}>Add</button>
       </div>
-      <ul className='todo-table'>{tasks.map((item, index) => (
+      <ul className='todo-table'>{tasks.map((item) => (
 
         <li 
-        key={index}>
+        key={item.id}>
           <span className={item.completed ? 'completed' : ''}>
             {item.text}
             </span>
 
         <button  className= {`todo-table-button-completed ${item.completed ? 'active' : ''}`}
-         onClick={() => toggleTasks(index)}>
+         onClick={() => toggleTasks(item.id)}>
           {item.completed ? 'Cancel' : 'Completed'}
           </button>
 
-        <button  className='todo-table-button' onClick={() => deleteTask(index)}>
+        <button  className='todo-table-button' onClick={() => deleteTask(item.id)}>
           delete
           </button>
         </li>
