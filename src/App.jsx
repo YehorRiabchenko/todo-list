@@ -18,6 +18,7 @@
 
 
     const [inputValue, setInputValue] = useState('');
+    const [filter, setFilter] = useState('all')
 
     const addTask = () => {
       if (inputValue.trim() === '') return;
@@ -47,6 +48,17 @@
       setTasks(tasks.filter(task => task.id !== id));
     };
 
+    const visibleTasks = tasks.filter(task => {
+      switch (filter) {
+        case 'active': 
+          return !task.completed; 
+        case 'completed': 
+          return task.completed;  
+        default: 
+          return true;            
+      }
+    });
+
     return (
       <div className='container'>
 
@@ -59,7 +71,7 @@
       />
       <button className='todo-button'  onClick={addTask}>Add</button>
       </div>
-      <ul className='todo-table'>{tasks.map((item) => (
+      <ul className='todo-table'>{visibleTasks.map((item) => (
 
         <li 
         key={item.id}>
@@ -77,6 +89,9 @@
           </button>
         </li>
       ))}</ul>
+      <button onClick={() => setFilter('all')}>all</button>
+      <button onClick={() => setFilter('active')}>active</button>
+      <button onClick={() => setFilter('completed')}>completed</button>
       </div>
   )};
   export default App
