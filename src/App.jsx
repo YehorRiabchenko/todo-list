@@ -1,9 +1,22 @@
   import { useState } from 'react'  
+  import { useEffect } from 'react';
   import './App.css'
 
   function App() {
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() => {
+      const savedTasks = localStorage.getItem('tasks');
+
+      if (savedTasks === null) return [];
+
+      return JSON.parse(savedTasks);
+    });
+
+    useEffect(() => {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
+
+
     const [inputValue, setInputValue] = useState('');
 
     const addTask = () => {
@@ -17,6 +30,7 @@
 
       setTasks([...tasks, newTask]);
       setInputValue('')
+
     };
 
     const toggleTasks = (id) => {
